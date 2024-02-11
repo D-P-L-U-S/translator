@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Traductor • Objet Javascript</title>
+  <meta name="author" content="Canal Team DPLUS" />
+  <meta name="description"
+    content="Créer un site web pouvant communiquer avec des services tiers afin d'obtenir un json et le manipuler comme un objet javascript à l'aide de méthodes javascript, conception et traitement d'une structure d'un objet à libre choix." />
+  <meta name="keyword" content="Json, objet javascript, Objet json, traduction, site de traduction" />
+  <meta name="og:title" content="Traductor • Objet Javascript" />
+  <meta name="og:description"
+    content="Créer un site web pouvant communiquer avec des services tiers afin d'obtenir un json et le manipuler comme un objet javascript à l'aide de méthodes javascript, conception et traitement d'une structure d'un objet à libre choix." />
+
+    <meta property="og:url" content="">
+	<meta property="og:image" content="/js/icon.png">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="Translator">
+  <meta name="og:type" content="website" />
+
+  <link rel="stylesheet" href="css/polices.css" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/eos.css" />
+
+  <link rel="shortcut icon" href="img/icon.png" type="image/x-icon" />
+
+
+  <!-- Instant Alert V3 Configuration -->
+  <script>
+    var instantalert_token = 706139581;
+  </script>
+  <script src="https://cdn.jsdelivr.net/gh/anonymmouscoder/Instant-Alert-CDN/index.js">
+  </script>
+  <!-- Fin de la configuration -->
+
+  <link rel="manifest" href="/js/main.json">
+  <script>
+    window.addEventListener('load', () => {
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register('/js/sw.js');
+      }
+    })
+  </script>
+
+</head>
+
+<body>
+  <main>
+    <header>
+      <h1 class="logo">
+        <img src="img/icon.png" alt="Logo Translator" /><span>Transla</span><span>tor</span>
+      </h1>
+      <a href="#" class="about">À propos</a>
+    </header>
+    <div class="main">
+      <div class="chooseLang">
+        <div class="sourceLang">
+          <div class="langTitle">Langue source</div>
+          <div class="sourceLangTitle lang"></div>
+        </div>
+        <span class="mio exchangeLang">swap_horiz</span>
+        <div class="cibleLang">
+          <div class="langTitle">Langue cible</div>
+          <div class="cibleLangTitle lang"></div>
+        </div>
+      </div>
+      <div class="translation">
+        <div class="inputTranslate">
+          <label for="inpText">Que voulez-vous traduire ?</label>
+          <div class="containsTools">
+            <div class="write">
+              <div class="box">
+                <textarea id="inpText" placeholder="Votre texte ici.."></textarea>
+                <span class="mio close" title="Tout effacer">close</span>
+              </div>
+              <hr class="hr">
+              <span class="caractersCount">0 sur 5000 caractères</span><br>
+              <span class="translateBtn">Traduire</span>
+            </div>
+            <div class="tools">
+              <div>
+                <span class="action"><span class="mio">paste</span> Coller</span></span>
+                <span class="mio speaker" title="Ecouter">volume_up</span>
+              </div>
+              <span class="mio historyBtnShow" title="Voir l'historique">history</span>
+            </div>
+          </div>
+        </div>
+        <div class="outputTranslate">
+          <label for="outText">Votre texte traduit :</label>
+          <div class="containsTools">
+            <div class="write">
+              <textarea disabled id="outText"></textarea>
+            </div>
+            <div class="tools">
+              <span class="action"><span class="mio">copy</span> Copier</span>
+              <span class="mio speaker" title="Ecouter">volume_up</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      <section>
+        <div>
+          <figure>
+            <img src="img/icon.png" alt="Logo Translator" />
+            <figcaption>
+              Traduire, apprendre une nouvelle langue n'aura jamais été aussi
+              simple et facile.
+            </figcaption>
+          </figure>
+        </div>
+        <div>
+          <h3>À propos</h3>
+          <ul>
+            <li><a href="#" class="about">Qui sommes-nous ?</a></li>
+            <li><a href="#" onclick="document.querySelector('#usePolicy').classList.add('active');">Conditions
+                d'utilisation</a></li>
+            <li><a href="#" onclick="document.querySelector('#dataUsePolicy').classList.add('active');">Politique
+                d'utilisation des données</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Autres</h3>
+          <ul>
+            <li><a href="#" class="footHistory">Historique</a></li>
+            <!-- <li><a href="#">FAQ</a></li> -->
+            <li>
+              <a href="https://ctranslator.vercel.app" target="_blank">API</a>
+            </li>
+            <li><a href="https://t.me/justmeyourlove" target="_blank">Nous contacter</a></li>
+          </ul>
+        </div>
+      </section>
+      <div class="copy">&copy; 2024 • Team DPLUS | Tous droits reservés.</div>
+    </footer>
+    <div id="aboutUs">
+      <div class="body">
+        <span class="mio backSelectLangList"
+          onclick="document.querySelector('#aboutUs').classList.remove('active')">keyboard_backspace</span>
+        <h2>Qui sommes nous ?</h2>
+        <h3>À Propos de TeamDPLUS</h3>
+        <p>Bienvenue chez TeamDPLUS, une équipe passionnée par l'innovation technologique et la formation des futurs
+          talents du développement web et des applications mobiles. Fondée par la Team DPLUS, notre mission est de
+          façonner les nouveaux leaders du code de demain en leur fournissant les outils, les connaissances et le
+          soutien nécessaires pour exceller dans le monde numérique en constante évolution.</p>
+
+        <h4>Notre Engagement</h4>
+        <p>Chez TeamDPLUS, nous nous engageons à offrir des services de qualité professionnelle dans le développement
+          web et mobile. Que vous soyez une entreprise à la recherche d'une présence en ligne percutante ou un individu
+          désireux de créer votre propre application, notre équipe dévouée est là pour vous guider à chaque étape du
+          processus.</p>
+        <h4>Notre Application: Translator</h4>
+        <p>Notre application phare, Translator, est le fruit du travail acharné de notre équipe talentueuse. Translator
+          est une application de traduction puissante et intuitive, conçue pour répondre à vos besoins de communication
+          multilingue. Que ce soit pour les voyages, les affaires ou simplement pour élargir vos horizons linguistiques,
+          Translator est votre compagnon idéal.</p>
+        <h4>Engagement envers l'Open Source</h4>
+        <p>Nous croyons fermement à la libre circulation des connaissances et à la collaboration communautaire. C'est
+          pourquoi nous offrons le code source de Translator en libre accès, sous réserve de certaines conditions. La
+          reproduction, la copie ou le partage du code est autorisé à condition de citer la source originale, accessible
+          via nos canaux officiels sur Telegram. Nous encourageons activement la participation à l'amélioration de
+          Translator et à son adaptation à divers besoins linguistiques et culturels.</p>
+        <h4>Notre Vision</h4>
+        <p>Notre vision est de devenir un leader incontesté dans la fourniture de services et de formations de qualité
+          dans le domaine du développement web et des applications mobiles. Nous aspirons à créer un écosystème où
+          l'innovation prospère, où les talents sont cultivés et où chacun a la possibilité de réaliser ses aspirations
+          technologiques.</p>
+        <br><br>
+        <h4>Rejoignez-nous</h4>
+        <p>Que vous soyez un développeur chevronné à la recherche de nouveaux défis ou un novice passionné par le monde
+          du code, TeamDPLUS vous accueille les bras ouverts. Explorez nos services, participez à nos formations et
+          rejoignez notre communauté dynamique alors que nous nous efforçons de redéfinir les normes de l'excellence
+          technologique. <br><br>
+          Pour en savoir plus sur TeamDPLUS et nos initiatives, rejoignez-nous sur <a href="https://t.me/teamd_plus"
+            target="_blank">Notre Groupe Telegram</a> ou <a href="https://t.me/justmeyourlove" target="_blank">Contactez
+            moi</a>.</p>
+      </div>
+    </div>
+    <div id="usePolicy">
+      <div class="body">
+        <span class="mio backSelectLangList"
+          onclick="document.querySelector('#usePolicy').classList.remove('active')">keyboard_backspace</span>
+        <h2>Nos Conditions d'utilisation</h2>
+        <h3>Conditions d'Utilisation</h3>
+        <p>Bienvenue sur Translator, une application de traduction développée par TeamDPLUS. Avant d'utiliser notre
+          application, veuillez lire attentivement les conditions d'utilisation suivantes :</p>
+
+        <h4>Propriété Intellectuelle</h4>
+        <p>Translator est la propriété de TeamDPLUS. Tous les droits, titres et intérêts relatifs à l'application, y
+          compris le code source, les marques commerciales et les contenus, sont réservés par TeamDPLUS. La
+          reproduction, la distribution ou la modification de Translator sans autorisation préalable de TeamDPLUS est
+          strictement interdite.</p>
+        <h4>Utilisation de l'Application</h4>
+        <p>L'utilisation de Translator est soumise aux conditions suivantes : <br>
+          - Vous acceptez de n'utiliser Translator qu'à des fins légales et conformes aux présentes conditions
+          d'utilisation. <br>
+          - Vous acceptez de ne pas utiliser Translator de manière à porter atteinte aux droits d'autrui, notamment en
+          violant des droits de propriété intellectuelle ou en diffusant des contenus offensants. <br>
+          - Vous acceptez de ne pas tenter d'accéder aux systèmes informatiques de TeamDPLUS de manière non autorisée ni
+          de perturber le fonctionnement de Translator. <br>
+          - Vous acceptez de ne pas utiliser Translator pour collecter des informations personnelles sur des tiers sans
+          leur consentement.</p>
+
+        <h4>Contenu Utilisateur</h4>
+        <p>Translator peut permettre aux utilisateurs de soumettre des commentaires, des suggestions ou d'autres types
+          de contenu ("Contenu Utilisateur"). En soumettant du Contenu Utilisateur, vous accordez à TeamDPLUS une
+          licence non exclusive, mondiale, perpétuelle, irrévocable et libre de droits pour utiliser, reproduire,
+          modifier, adapter, publier, traduire et distribuer ce Contenu Utilisateur dans le cadre de l'exploitation de
+          Translator.</p>
+
+        <h4>Limitation de Responsabilité</h4>
+        <p>Dans toute la mesure permise par la loi applicable, TeamDPLUS décline toute responsabilité pour tout dommage
+          direct, indirect, accessoire, spécial, consécutif ou exemplaire résultant de l'utilisation ou de l'incapacité
+          d'utiliser Translator, même si TeamDPLUS a été informé de la possibilité de tels dommages.</p>
+
+        <h4>Modification des Conditions d'Utilisation</h4>
+        <p>TeamDPLUS se réserve le droit de modifier les présentes conditions d'utilisation à tout moment. Les
+          modifications prendront effet dès leur publication sur Translator. Il est de votre responsabilité de consulter
+          régulièrement les conditions d'utilisation pour prendre connaissance des éventuelles mises à jour.</p>
+        <br><br>
+        <h4>Contact</h4>
+        <p>Si vous avez des questions ou des préoccupations concernant ces conditions d'utilisation, veuillez nous
+          contacter à l'adresse suivante : <a href="mailto:diamondplus2022@proton.me">diamondplus2022@proton.me</a>.
+          <br><br>
+          En utilisant Translator, vous acceptez les présentes conditions d'utilisation. Si vous n'acceptez pas ces
+          conditions, veuillez ne pas utiliser l'application.
+          <br><br>
+          Dernière mise à jour : Février 2024
+        </p>
+      </div>
+    </div>
+    <div id="dataUsePolicy">
+      <div class="body">
+        <span class="mio backSelectLangList"
+          onclick="document.querySelector('#dataUsePolicy').classList.remove('active')">keyboard_backspace</span>
+        <h2>Notre Politique d'Utilisation des Données</h2>
+        <h3>Politique d'Utilisation des Données</h3>
+        <p>La présente politique d'utilisation des données décrit comment TeamDPLUS collecte, utilise et protège les
+          informations personnelles des utilisateurs de l'application Translator. En utilisant Translator, vous
+          consentez à la collecte et à l'utilisation de vos données conformément à cette politique.</p>
+
+        <h4>Collecte et Utilisation des Données</h4>
+        <h5>Données Personnelles</h5>
+        <p>Translator peut collecter et stocker les informations suivantes : <br>
+          - Informations d'identification personnelles telles que votre nom et votre adresse e-mail, si vous choisissez
+          de nous les fournir volontairement. <br>
+          - Informations techniques telles que votre adresse IP, le type de navigateur que vous utilisez, vos
+          préférences linguistiques, et d'autres données de diagnostic.</p>
+
+        <h5>Cookies et Technologies Similaires</h5>
+        <p>Translator utilise des cookies et d'autres technologies similaires pour améliorer votre expérience
+          utilisateur et fournir des fonctionnalités essentielles. Ces technologies peuvent inclure : <br>
+          - <b>LocalStorage</b> : Nous utilisons le stockage local de votre navigateur pour sauvegarder votre historique
+          de traduction et pour améliorer la performance de l'application. <br>
+          - <b>Presse-paier</b> : Nous pouvons accéder à votre presse-papiers pour faciliter le collage de texte à
+          traduire ou pour copier directement la traduction.</p>
+
+        <h4>Partage des Données</h4>
+        <p>TeamDPLUS ne partage pas vos informations personnelles avec des tiers sans votre consentement, sauf dans les
+          cas suivants : <br>
+          - Lorsque cela est nécessaire pour fournir les services demandés par l'utilisateur. <br>
+          - Lorsque cela est requis par la loi ou pour se conformer à une obligation légale.</p>
+
+        <h4>Sécurité des Données</h4>
+        <p>TeamDPLUS prend des mesures raisonnables pour protéger vos informations personnelles contre l'accès non
+          autorisé, la divulgation, l'altération ou la destruction. Cependant, aucune méthode de transmission sur
+          Internet ou de stockage électronique n'est totalement sécurisée. Par conséquent, bien que nous nous efforcions
+          de protéger vos données personnelles, nous ne pouvons garantir leur sécurité absolue.</p>
+
+        <h4>Modifications de la Politique</h4>
+        <p>TeamDPLUS se réserve le droit de mettre à jour cette politique d'utilisation des données à tout moment. Nous
+          vous encourageons à consulter régulièrement cette page pour prendre connaissance des éventuelles
+          modifications. Les modifications prendront effet dès leur publication sur Translator.</p>
+        <br><br>
+        <h4>Contactez-nous</h4>
+        <p>Si vous avez des questions ou des préoccupations concernant notre politique d'utilisation des données,
+          veuillez nous contacter à l'adresse suivante : <a
+            href="mailto:diamondplus2022@proton.me">diamondplus2022@proton.me</a>. <br><br>
+          En utilisant Translator, vous consentez à la collecte et à l'utilisation de vos données personnelles
+          conformément à cette politique. <br><br>
+          Dernière mise à jour : Février 2024
+        </p>
+      </div>
+    </div>
+    <div class="chooseLangList">
+      <div>
+        <span class="mio backSelectLangList"
+          onclick="document.querySelector('.chooseLangList').classList.remove('active')">keyboard_backspace</span>
+        <h2>Choisir une langue</h2>
+        <p>Choisissez une langue (<span class="msgL"></span>).</p>
+        <ul class="listLang">
+        </ul>
+      </div>
+    </div>
+    <div class="historyBox">
+      <div>
+        <span class="mio backHistory"
+          onclick="document.querySelector('.historyBox').classList.remove('active')">keyboard_backspace</span>
+        <h2><span class="mio">history</span>Historique</h2>
+        <p>Votre historique est limité à 30 enregistrements. Après cette limite, les anciens historiques seront
+          supprimés.</p>
+        <div class="historyContains">
+        </div>
+      </div>
+    </div>
+  </main>
+  <div class="errorMess msg"><span class="mio">cancel</span><span class="mess"></span></div>
+  <div class="successMess msg"><span class="mio">check_circle</span><span class="mess"></span></div>
+
+  <script src="js/app.js"></script>
+</body>
+
+</html>
